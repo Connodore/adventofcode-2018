@@ -8,7 +8,6 @@
  * Notes:
  *  I learned that I could create iterators from streams
  *  from: https://www.linuxtopia.org/online_books/programming_books/c++_practical_programming/c++_practical_programming_142.html
- *
  **/
 
 #include <cstdlib>
@@ -17,15 +16,14 @@
 #include <iterator>
 #include <numeric>
 
-using std::cin;
 using std::cout;
 
 int main(int argc, char *argv[])
 {
-    std::ifstream in("data/part-1.txt");
+    std::ifstream in{"data"};
 
-    cout << std::accumulate(std::istream_iterator<long>(in),
-                            std::istream_iterator<long>(),
+    cout << std::accumulate(std::istream_iterator<long>{in},
+                            std::istream_iterator<long>{},
                             0l);
 
     return EXIT_SUCCESS;
