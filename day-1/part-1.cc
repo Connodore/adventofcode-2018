@@ -18,7 +18,7 @@
 
 using std::cout;
 
-int main(int argc, char *argv[])
+int main()
 {
     std::ifstream in{"data"};
 
