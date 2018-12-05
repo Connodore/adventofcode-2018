@@ -23,7 +23,7 @@ int main()
 
     auto [twos, threes] = std::accumulate(std::istream_iterator<std::string>{in},
                                           std::istream_iterator<std::string>{},
-                                          std::make_pair(0ul, 0ul),
+                                          std::pair{0ul, 0ul},
                                           [](const auto &accum, const auto &s) {
                                               std::unordered_multiset<char> letters{begin(s), end(s)};
 
