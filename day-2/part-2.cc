@@ -38,7 +38,7 @@ std::string solve(std::ifstream &in)
     for (auto it1 = begin(data); it1 != prev(end(data)); advance(it1, 1))
     {
         auto s1 = *it1;
-        auto it2 = std::find_if(it1 + 1, end(data), [&s1](const auto &s2) {
+        auto it2 = std::find_if(next(it1), end(data), [&s1](const auto &s2) {
             auto diffs = std::inner_product(begin(s1), end(s1),
                                             begin(s2),
                                             0ul,
@@ -56,6 +56,6 @@ std::string solve(std::ifstream &in)
         }
     }
 
-    // Will never be reached
+    // Will never be reached, used to remove compiler warning
     return std::string{};
 }
