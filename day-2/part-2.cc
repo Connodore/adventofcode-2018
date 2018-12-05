@@ -3,7 +3,7 @@
  * Date  : 4 December 2018
  *
  * Description:
- *  Solution for Advent of Code: Day 2 - part 1
+ *  Solution for Advent of Code: Day 2 - part 2
  **/
 
 #include <algorithm>
@@ -35,7 +35,7 @@ std::string solve(std::ifstream &in)
         std::istream_iterator<std::string>{in},
         std::istream_iterator<std::string>{}};
 
-    for (auto it1 = begin(data); it1 != end(data) - 1; ++it1)
+    for (auto it1 = begin(data); it1 != prev(end(data)); advance(it1, 1))
     {
         auto s1 = *it1;
         auto it2 = std::find_if(it1 + 1, end(data), [&s1](const auto &s2) {
@@ -46,10 +46,11 @@ std::string solve(std::ifstream &in)
 
             return diffs == 1;
         });
-        auto s2 = *it2;
 
         if (it2 != end(data))
         {
+            auto s2 = *it2;
+
             s1.erase(std::mismatch(begin(s1), end(s1), begin(s2)).first);
             return s1;
         }
