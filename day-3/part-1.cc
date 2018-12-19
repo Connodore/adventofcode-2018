@@ -14,40 +14,10 @@
 #include <iterator>
 #include <unordered_set>
 
+#include "CC-Utilities/line.hpp"
+#include "CC-Utilities/pair-hash.hpp"
+
 using std::cout;
-
-#include "~/Workspace/CC-Utilites"
-
-class line
-{
-    std::string data;
-
-  public:
-    friend std::istream &operator>>(std::istream &in, line &l)
-    {
-        return std::getline(in, l.data);
-    }
-
-    operator std::string() const
-    {
-        return data;
-    }
-};
-
-template <class T1, class T2>
-struct pair_hash
-{
-    using pair_type = std::pair<T1, T2>;
-
-    size_t
-    operator()(const pair_type &p) const
-    {
-        size_t h1 = std::hash<T1>{}(p.first);
-        size_t h2 = std::hash<T2>{}(p.second);
-
-        return h1 ^ (h2 << 1);
-    }
-};
 
 int main()
 {
