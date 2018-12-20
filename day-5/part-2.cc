@@ -80,7 +80,8 @@ unsigned long
 react(const std::string &polymer)
 {
     std::stack<char> units{};
-    std::for_each(begin(polymer), end(polymer), [&](auto u) {
+    for (auto u : polymer)
+    {
         if (size(units) == 0)
             units.push(u);
         else
@@ -92,6 +93,6 @@ react(const std::string &polymer)
             else
                 units.push(u);
         }
-    });
+    }
     return size(units);
 }
