@@ -7,6 +7,7 @@
  **/
 
 #include <algorithm>
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -25,6 +26,7 @@ int main()
             units.push(u);
         else
         {
+            // The units must be opposite cases, using a difference will accomplish this
             static const int char_diff = 'a' - 'A';
             if (std::abs(u - units.top()) == char_diff)
                 units.pop();
